@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+     title: {
+        text: '国内企业在Github的活跃情况',
+        subtext: '数据来自 X-lab开放实验室'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['category','账号活跃度','世界Top500项目数','世界Top10000项目数']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['小米','京东','360','微众银行','Deepin','华为','腾讯','PingCAP','百度','阿里']
+    },
+    series: [
+        {
+            name: '账号活跃度',
+            type: 'bar',
+            data: [526,670,690,728,1012,1043,2601,3331,3795,11049],
+			color:'#FF0132'
+        },
+        {
+            name: '世界Top500项目数',
+            type: 'bar',
+            data: [0,2,0,0,0,1,0,2,4,6],
+			color:'#FF8C00'
+        },
+        {
+            name: '世界Top10000项目数',
+            type: 'bar',
+            data: [2,4,2,0,2,4,18,16,15,65],
+			color:'#FFD700'
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

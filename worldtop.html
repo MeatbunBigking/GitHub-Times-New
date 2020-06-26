@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '2019世界开源项目Top10',
+        subtext: '数据来自 X-lab开放实验室'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['项目活跃度','项目讨论数']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['tweakCompatible（IOS越狱工具）' , 'ansible（python类）', 'DefinitelyTyped（代码库）', 'tensorflow（谷歌）', 'kubernetes（谷歌）', 'first-contributions（新手指南）' , 'flutter（谷歌）' , 'azure-docs（微软）' , '996.ICU（中国）' , 'vscode（微软）']
+    },
+    series: [
+        {
+            name: '项目活跃度',
+            type: 'bar',
+            data: [18104,18330,19824,21984,22311,25695,30437,33600,34201,34371],
+			color:'#FF4500'
+        },
+        {
+            name: '项目讨论数',
+            type: 'bar',
+            data: [54975,77312,44571,53492,238964,9471,85735,96327,26279,83592],
+			color:'#F5DEB3'
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

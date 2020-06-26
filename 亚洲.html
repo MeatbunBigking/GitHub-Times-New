@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '2019年GitHub私人用户数量中国占比近全亚洲三分之一',
+        subtext: '单位：万人',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        left: 'center',
+        top: 'bottom',
+        data: ['中国', '亚洲其他国家（万人）']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series: [
+       
+        {
+            name: '',
+            type: 'pie',
+            radius: [70, 120],
+            center: ['50%', '50%'],
+            roseType: 'area',
+            data: [
+                {value: 119.1, name: '中国'},
+                {value: 265.3, name: '亚洲其他国家（万人）'}
+            ],
+			itemStyle: {
+			 	 emphasis: {
+			 	     shadowBlur: 10,
+			 	     shadowOffsetX: 0,
+			 	     shadowColor: 'rgba(0, 0, 0, 0.5)'
+			 	  },
+						     normal:{
+			 	     color:function(params) {
+			 	     //自定义颜色
+			 	     var colorList = [           
+			                  '#FF0000','#90EE90'
+			 	         ];
+			 	         return colorList[params.dataIndex]
+			 	      }
+			 	 }
+			}
+			
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
